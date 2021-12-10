@@ -8,17 +8,38 @@ contract WavePortal {
     uint256 totalWaves;
     address senderAddress;
 
+    event NewWave(address indexed from, uint256 timestamp, string message);
+
+    //basicly the wave model
+    struct Wave {
+        address waver;
+        string message;
+        uint256 timestamp;
+    }
+
+    //variable who save waves
+    Wave[] waves;
+
     constructor() {
         console.log("Yo yo, My first Contract Smart or Smart Contract");
     }
 
     //function public
-    function wave() public {
+    function wave(string memory _message) public {
         totalWaves+=1;
         senderAddress = msg.sender;
         //call variable inside print %s.... , variable
         //msg.sender c'est l'addresse de la personne qui appel la fonction, le wallet
-        console.log("%s has saved on chain", msg.sender);
+        console.log("%s waved has saved on chain & messages => %s", msg.sender, _message);
+        //save wave in the array
+        waves.push(Wave(msg.sender, _message, block.timestamp));
+        //emit 
+        emit NewWave(msg.sender, block.timestamp, _message);
+    }
+
+    //return array of all waves
+    function getAllWaves() public view returns (Wave[] memory){
+        return waves;
     }
 
     //function with a return 
