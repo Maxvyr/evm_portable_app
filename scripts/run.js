@@ -7,12 +7,23 @@ const main = async () => {
     //compile
     const waveContractFactory = await hre.ethers.getContractFactory('WavePortal');
     //deploy
-    const waveContract = await waveContractFactory.deploy();
+    const waveContract = await waveContractFactory.deploy({
+      value: hre.ethers.utils.parseEther('0.1') //add ETH to contract
+    });
     await waveContract.deployed();
     //print address SmartContract when it's deploy
     console.log("Contract deployed to:", waveContract.address);
     //print address user owner wallet 
     console.log("Owner address :", owner.address);
+
+    //check contract balance
+    let contractBalance = await hre.ethers.provider.getBalance(
+      waveContract.address
+    );
+    console.log(
+      'Contract balance:',
+      hre.ethers.utils.formatEther(contractBalance)
+    );
 
     //Call function
     let waveCount;
@@ -26,8 +37,15 @@ const main = async () => {
     waveTxn = await waveContract.connect(randomPerson).wave("Another message random");
     await waveTxn.wait();
 
-    waveCount = await waveContract.getTotalWaves();
+    //another check balance see withdraw or not
+    contractBalance = await hre.ethers.provider.getBalance(waveContract.address);
+    console.log(
+      'Contract balance:',
+      hre.ethers.utils.formatEther(contractBalance)
+    );
+
     //recover allwaves
+    waveCount = await waveContract.getTotalWaves();
     let allWaves = await waveContract.getAllWaves();
     console.log("Total :", waveCount);
     console.log("Value : ",allWaves);

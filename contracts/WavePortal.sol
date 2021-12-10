@@ -20,7 +20,8 @@ contract WavePortal {
     //variable who save waves
     Wave[] waves;
 
-    constructor() {
+    //payable allow contract to send money
+    constructor() payable {
         console.log("Yo yo, My first Contract Smart or Smart Contract");
     }
 
@@ -35,6 +36,16 @@ contract WavePortal {
         waves.push(Wave(msg.sender, _message, block.timestamp));
         //emit 
         emit NewWave(msg.sender, block.timestamp, _message);
+
+        //send Eth to user
+        uint256 prizeAmount = 0.0001 ether;
+        //check balance account
+        require(
+            prizeAmount <= address(this).balance, //prize superior of the contract balance
+            "Sorry contract doesn't have enougth ETH"
+        );
+        (bool success, ) = (msg.sender).call{value: prizeAmount}(""); //weird synstax but is to validate the sending
+        require(success, "Faile to widthdraw ETH from contract");
     }
 
     //return array of all waves
