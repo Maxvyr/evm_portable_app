@@ -56,7 +56,7 @@ contract WavePortal {
         console.log("Random # generated: %d", seed);
 
         //% user win
-        if(seed <= 50){ //50% de win
+        if(seed <= 20){ //20% of chance to win
             console.log("%s you win!!!!!", msg.sender);   
             //send Eth to user
             uint256 prizeAmount = 0.0001 ether;
