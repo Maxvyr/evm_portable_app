@@ -33,8 +33,11 @@ const main = async () => {
     //send waves
     let waveTxn = await waveContract.wave("A message random");
     await waveTxn.wait();
-
-    waveTxn = await waveContract.connect(randomPerson).wave("Another message random");
+    //same address
+    waveTxn = await waveContract.wave("A message random same address SPAM");
+    await waveTxn.wait();
+    //new address
+    waveTxn = await waveContract.connect(randomPerson).wave("Another message random, new address");
     await waveTxn.wait();
 
     //another check balance see withdraw or not
