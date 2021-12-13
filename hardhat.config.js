@@ -23,6 +23,12 @@ module.exports = {
     rinkeby: {
       url: process.env.urlAlchemy,
       accounts: [process.env.accountsRinkeby],
-    }
+    },
+    fuji: {
+      url: 'https://api.avax-test.network/ext/bc/C/rpc',
+      gasPrice: 470000000000,
+      chainId: 43113,
+      accounts: [process.env.accountsFuji]
+    },
   }
 };
