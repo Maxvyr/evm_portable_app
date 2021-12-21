@@ -1,15 +1,15 @@
-# Basic Sample Hardhat Project
+# COMING SOON
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+<a href="https://gitmoji.dev">
+  <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
+</a>
 
-Try running some of the following tasks:
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A72UVP8)
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+## Crypto Tips
+
+![https://i.imgur.com/wuW30D4.png](https://i.imgur.com/wuW30D4.png)
+
+## Contact Me
+
+contact : [pandamydev@gmail.com](mailto:pandamydev@gmail.com)
