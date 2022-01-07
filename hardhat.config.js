@@ -20,15 +20,15 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 module.exports = {
   solidity: "0.8.4",
   networks :{
-    rinkeby: {
-      url: process.env.urlAlchemy,
-      accounts: [process.env.accountsRinkeby],
-    },
-    fuji: {
-      url: 'https://api.avax-test.network/ext/bc/C/rpc',
-      gasPrice: 470000000000,
-      chainId: 43113,
-      accounts: [process.env.accountsFuji]
-    },
+    // rinkeby: {
+    //   url: process.env.urlAlchemy,
+    //   accounts: [process.env.ACCOUNTS_RINKEBY],
+    // },
+    testnet_aurora: {
+      url: 'https://testnet.aurora.dev',
+      accounts: [process.env.ACCOUNTS_AURORA],
+      chainId: 1313161555,
+      gasPrice: 120 * 1000000000
+    }
   }
 };
